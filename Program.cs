@@ -7,31 +7,28 @@ using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuración del DbContext con SQL Server
+// DbContext con SQL Server
 builder.Services.AddDbContext<BdClientesContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("ClienteDB"))
 );
 
-// Configuración de Health Checks para SQL Server (sin parámetros 'name' ni 'failureStatus')
+// Health Checks para SQL Server sin parámetros extra
 builder.Services.AddHealthChecks()
-    .AddSqlServer(
-        builder.Configuration.GetConnectionString("ClienteDB"),
-        tags: new[] { "db", "sql" }
-    );
+    .AddSqlServer(builder.Configuration.GetConnectionString("ClienteDB"));
 
-// Servicios necesarios para la API
+// Servicios API
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware de Prometheus
 app.UseMetricServer();
 app.UseHttpMetrics();
-app.UseHealthChecksPrometheusExporter(options => { });  // Usa un delegado vacío
 
-// Middleware de Swagger
+// Comenta esta línea si da error
+app.UseHealthChecksPrometheusExporter();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
