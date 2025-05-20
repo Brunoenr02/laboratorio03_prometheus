@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "iUFjM6mfeME=",
+  "dgSpecHash": "/YDvWVyfkYk=",
   "success": true,
-  "projectFilePath": "D:\\2025_I\\BaseDatos\\ClienteAPI\\ClienteAPI.csproj",
+  "projectFilePath": "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\ClienteAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bruno\\.nuget\\packages\\aspnetcore.healthchecks.prometheus.metrics\\9.0.0\\aspnetcore.healthchecks.prometheus.metrics.9.0.0.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\9.0.0\\aspnetcore.healthchecks.ui.client.9.0.0.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\aspnetcore.healthchecks.ui.core\\9.0.0\\aspnetcore.healthchecks.ui.core.9.0.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

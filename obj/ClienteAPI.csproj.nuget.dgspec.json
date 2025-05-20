@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\2025_I\\BaseDatos\\ClienteAPI\\ClienteAPI.csproj": {}
+    "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\ClienteAPI.csproj": {}
   },
   "projects": {
-    "D:\\2025_I\\BaseDatos\\ClienteAPI\\ClienteAPI.csproj": {
+    "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\ClienteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\2025_I\\BaseDatos\\ClienteAPI\\ClienteAPI.csproj",
+        "projectUniqueName": "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\ClienteAPI.csproj",
         "projectName": "ClienteAPI",
-        "projectPath": "D:\\2025_I\\BaseDatos\\ClienteAPI\\ClienteAPI.csproj",
+        "projectPath": "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\ClienteAPI.csproj",
         "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "D:\\2025_I\\BaseDatos\\ClienteAPI\\obj\\",
+        "outputPath": "D:\\2025_I\\BaseDatos\\laboratorio03_prometheus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,6 +44,10 @@
           "targetAlias": "net8.0",
           "dependencies": {
             "AspNetCore.HealthChecks.Prometheus.Metrics": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AspNetCore.HealthChecks.UI.Client": {
               "target": "Package",
               "version": "[9.0.0, )"
             },
