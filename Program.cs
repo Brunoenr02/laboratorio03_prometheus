@@ -7,14 +7,14 @@ using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DbContext con SQL Server
+// DbContext con SQL Server (aquí sí el genérico y configuración normal)
 builder.Services.AddDbContext<BdClientesContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("ClienteDB"))
 );
 
-// Health Checks con tipo explícito
+// Health Checks SQL Server (sin genérico ni parámetros extras)
 builder.Services.AddHealthChecks()
-    .AddSqlServer<BdClientesContext>(builder.Configuration.GetConnectionString("ClienteDB"));
+    .AddSqlServer(builder.Configuration.GetConnectionString("ClienteDB"));
 
 // Servicios API
 builder.Services.AddControllers();
@@ -26,7 +26,7 @@ var app = builder.Build();
 app.UseMetricServer();
 app.UseHttpMetrics();
 
-// Elimina o comenta esta línea si da error
+// Comenta o elimina esta línea si da error
 // app.UseHealthChecksPrometheusExporter();
 
 app.UseSwagger();
