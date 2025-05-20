@@ -12,9 +12,9 @@ builder.Services.AddDbContext<BdClientesContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("ClienteDB"))
 );
 
-// Health Checks para SQL Server sin parámetros extra
+// Health Checks con tipo explícito
 builder.Services.AddHealthChecks()
-    .AddSqlServer(builder.Configuration.GetConnectionString("ClienteDB"));
+    .AddSqlServer<BdClientesContext>(builder.Configuration.GetConnectionString("ClienteDB"));
 
 // Servicios API
 builder.Services.AddControllers();
@@ -26,8 +26,8 @@ var app = builder.Build();
 app.UseMetricServer();
 app.UseHttpMetrics();
 
-// Comenta esta línea si da error
-app.UseHealthChecksPrometheusExporter();
+// Elimina o comenta esta línea si da error
+// app.UseHealthChecksPrometheusExporter();
 
 app.UseSwagger();
 app.UseSwaggerUI();
