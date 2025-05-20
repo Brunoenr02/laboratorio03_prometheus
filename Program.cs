@@ -12,11 +12,10 @@ builder.Services.AddDbContext<BdClientesContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("ClienteDB"))
 );
 
-// Configuración de Health Checks para SQL Server
+// Configuración de Health Checks para SQL Server (sin parámetro 'name')
 builder.Services.AddHealthChecks()
     .AddSqlServer(
         builder.Configuration.GetConnectionString("ClienteDB"),
-        name: "sqlserver",
         failureStatus: HealthStatus.Unhealthy,
         tags: new[] { "db", "sql" });
 
@@ -29,8 +28,8 @@ var app = builder.Build();
 
 // Middleware de Prometheus
 app.UseMetricServer();                 // /metrics
-app.UseHttpMetrics();                 // Métricas HTTP
-app.UseHealthChecksPrometheusExporter(); // Exporta resultados de health checks a Prometheus
+app.UseHttpMetrics();                  // Métricas HTTP
+app.UseHealthChecksPrometheusExporter(options => { }); // Exporta resultados health checks a Prometheus
 
 // Middleware de Swagger
 app.UseSwagger();
