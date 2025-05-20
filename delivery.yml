@@ -1,0 +1,39 @@
+name: Delivery and Test Prometheus Metric
+
+on:
+  workflow_dispatch:  # Activación manual
+
+jobs:
+  deploy_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Compose
+        uses: docker/setup-docker@v2
+
+      - name: Start Docker Compose services
+        run: docker-compose up -d
+
+      - name: Wait for Prometheus to be ready
+        run: |
+          echo "Waiting for Prometheus to start..."
+          for i in {1..30}; do
+            if curl -s http://localhost:9090/-/ready; then
+              echo "Prometheus is ready!"
+              break
+            else
+              echo "Waiting..."
+              sleep 2
+            fi
+          done
+
+      - name: Query Prometheus metric
+        run: |
+          curl -s 'http://localhost:9090/api/v1/query?query=http_request_duration_seconds_count' | jq
+
+      - name: Shut down Docker Compose
+        if: always()
+        run: docker-compose down
